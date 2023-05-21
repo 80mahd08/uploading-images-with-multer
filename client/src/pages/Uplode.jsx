@@ -1,16 +1,18 @@
 
 export default function Uplode() {
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const data = new FormData(e.target);
-        fetch('http://localhost:3000/uploadImg', {
-            method: 'POST',
-            body: data
-        }).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.log(err);
-        })
+        try {
+            const resp = await fetch('http://localhost:3000/uploadImg', {
+                method: 'POST',
+                body: data
+            })
+            const result = await resp.json()
+            console.log(result)
+        } catch (error) {
+            throw error
+        }
         
     }
 

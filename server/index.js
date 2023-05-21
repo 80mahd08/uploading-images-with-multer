@@ -64,6 +64,7 @@ app.post('/uploadImg', multerUpload.single('image'), (req, res) => {
             throw err;
         }
         console.log('uploaded successfully');
+        res.json(result)
     })
 })
 
